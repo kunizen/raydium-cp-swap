@@ -23,7 +23,7 @@ pub struct Initialize<'info> {
     pub creator: Signer<'info>,
 
     /// Which config the pool belongs to.
-    pub amm_config: Box<Account<'info, AmmConfig>>,
+    pub amm_config: Box<Account<'info, CpmmConfig>>,
 
     /// CHECK: pool vault and lp mint authority
     #[account(

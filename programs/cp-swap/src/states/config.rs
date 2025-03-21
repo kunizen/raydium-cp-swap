@@ -5,7 +5,7 @@ pub const AMM_CONFIG_SEED: &str = "amm_config";
 /// Holds the current owner of the factory
 #[account]
 #[derive(Default, Debug)]
-pub struct AmmConfig {
+pub struct CpmmConfig {
     /// Bump to identify PDA
     pub bump: u8,
     /// Status to control if new pool can be create
@@ -28,6 +28,6 @@ pub struct AmmConfig {
     pub padding: [u64; 16],
 }
 
-impl AmmConfig {
+impl CpmmConfig {
     pub const LEN: usize = 8 + 1 + 1 + 2 + 4 * 8 + 32 * 2 + 8 * 16;
 }

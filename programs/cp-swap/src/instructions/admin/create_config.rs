@@ -22,9 +22,9 @@ pub struct CreateAmmConfig<'info> {
         ],
         bump,
         payer = owner,
-        space = AmmConfig::LEN
+        space = CpmmConfig::LEN
     )]
-    pub amm_config: Account<'info, AmmConfig>,
+    pub amm_config: Account<'info, CpmmConfig>,
 
     pub system_program: Program<'info, System>,
 }

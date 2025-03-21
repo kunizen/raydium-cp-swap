@@ -23,7 +23,7 @@ pub struct Swap<'info> {
 
     /// The factory state to read protocol fees
     #[account(address = pool_state.load()?.amm_config)]
-    pub amm_config: Box<Account<'info, AmmConfig>>,
+    pub amm_config: Box<Account<'info, CpmmConfig>>,
 
     /// The program account of the pool in which the swap will be performed
     #[account(mut)]

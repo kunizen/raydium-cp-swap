@@ -424,7 +424,7 @@ fn main() -> Result<()> {
             let mut token_0_mint_data = token_0_mint_account.clone().unwrap().data;
             let mut token_1_mint_data = token_1_mint_account.clone().unwrap().data;
             let mut user_input_token_data = user_input_token_account.clone().unwrap().data;
-            let amm_config_state = deserialize_anchor_account::<raydium_cp_swap::states::AmmConfig>(
+            let amm_config_state = deserialize_anchor_account::<raydium_cp_swap::states::CpmmConfig>(
                 amm_config_account.as_ref().unwrap(),
             )?;
             let token_0_vault_info =
@@ -578,7 +578,7 @@ fn main() -> Result<()> {
             let mut token_0_mint_data = token_0_mint_account.clone().unwrap().data;
             let mut token_1_mint_data = token_1_mint_account.clone().unwrap().data;
             let mut user_input_token_data = user_input_token_account.clone().unwrap().data;
-            let amm_config_state = deserialize_anchor_account::<raydium_cp_swap::states::AmmConfig>(
+            let amm_config_state = deserialize_anchor_account::<raydium_cp_swap::states::CpmmConfig>(
                 amm_config_account.as_ref().unwrap(),
             )?;
             let token_0_vault_info =

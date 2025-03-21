@@ -28,7 +28,7 @@ pub struct CollectProtocolFee<'info> {
 
     /// Amm config account stores owner
     #[account(address = pool_state.load()?.amm_config)]
-    pub amm_config: Account<'info, AmmConfig>,
+    pub amm_config: Account<'info, CpmmConfig>,
 
     /// The address that holds pool tokens for token_0
     #[account(
