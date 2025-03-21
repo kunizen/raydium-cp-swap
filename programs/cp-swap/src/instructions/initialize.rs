@@ -141,9 +141,9 @@ pub struct Initialize<'info> {
         ],
         bump,
         payer = creator,
-        space = ObservationState::LEN
+        space = CpmmObservationState::LEN
     )]
-    pub observation_state: AccountLoader<'info, ObservationState>,
+    pub observation_state: AccountLoader<'info, CpmmObservationState>,
 
     /// Program to create mint account and mint tokens
     pub token_program: Program<'info, Token>,
@@ -337,7 +337,7 @@ pub fn create_pool<'info>(
     token_0_mint: &AccountInfo<'info>,
     token_1_mint: &AccountInfo<'info>,
     system_program: &AccountInfo<'info>,
-) -> Result<AccountLoad<'info, PoolState>> {
+) -> Result<AccountLoad<'info, CpmmPoolState>> {
     if pool_account_info.owner != &system_program::ID {
         return err!(ErrorCode::NotApproved);
     }
@@ -368,10 +368,10 @@ pub fn create_pool<'info>(
             token_1_mint.key().as_ref(),
             &[bump],
         ],
-        PoolState::LEN,
+        CpmmPoolState::LEN,
     )?;
 
-    Ok(AccountLoad::<PoolState>::try_from_unchecked(
+    Ok(AccountLoad::<CpmmPoolState>::try_from_unchecked(
         &crate::id(),
         &pool_account_info,
     )?)

@@ -24,7 +24,7 @@ pub struct CollectProtocolFee<'info> {
 
     /// Pool state stores accumulated protocol fee amount
     #[account(mut)]
-    pub pool_state: AccountLoader<'info, PoolState>,
+    pub pool_state: AccountLoader<'info, CpmmPoolState>,
 
     /// Amm config account stores owner
     #[account(address = pool_state.load()?.amm_config)]

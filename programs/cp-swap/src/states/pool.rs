@@ -23,7 +23,7 @@ pub enum PoolStatusBitFlag {
 #[account(zero_copy(unsafe))]
 #[repr(packed)]
 #[derive(Default, Debug)]
-pub struct PoolState {
+pub struct CpmmPoolState {
     /// Which config the pool belongs
     pub amm_config: Pubkey,
     /// pool creator
@@ -78,7 +78,7 @@ pub struct PoolState {
     pub padding: [u64; 31],
 }
 
-impl PoolState {
+impl CpmmPoolState {
     pub const LEN: usize = 8 + 10 * 32 + 1 * 5 + 8 * 7 + 8 * 31;
 
     pub fn initialize(
@@ -168,7 +168,7 @@ pub mod pool_test {
 
         #[test]
         fn get_set_status_by_bit() {
-            let mut pool_state = PoolState::default();
+            let mut pool_state = CpmmPoolState::default();
             pool_state.set_status(4); // 0000100
             assert_eq!(
                 pool_state.get_status_by_bit(PoolStatusBitIndex::Swap),

@@ -27,7 +27,7 @@ pub struct Swap<'info> {
 
     /// The program account of the pool in which the swap will be performed
     #[account(mut)]
-    pub pool_state: AccountLoader<'info, PoolState>,
+    pub pool_state: AccountLoader<'info, CpmmPoolState>,
 
     /// The user token account for input token
     #[account(mut)]
@@ -70,7 +70,7 @@ pub struct Swap<'info> {
     pub output_token_mint: Box<InterfaceAccount<'info, Mint>>,
     /// The program account for the most recent oracle observation
     #[account(mut, address = pool_state.load()?.observation_key)]
-    pub observation_state: AccountLoader<'info, ObservationState>,
+    pub observation_state: AccountLoader<'info, CpmmObservationState>,
 }
 
 pub fn swap_base_input(ctx: Context<Swap>, amount_in: u64, minimum_amount_out: u64) -> Result<()> {

@@ -22,7 +22,7 @@ pub struct Deposit<'info> {
     pub authority: UncheckedAccount<'info>,
 
     #[account(mut)]
-    pub pool_state: AccountLoader<'info, PoolState>,
+    pub pool_state: AccountLoader<'info, CpmmPoolState>,
 
     /// Owner lp tokan account
     #[account(mut,  token::authority = owner)]

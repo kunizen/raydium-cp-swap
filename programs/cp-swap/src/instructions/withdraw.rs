@@ -23,7 +23,7 @@ pub struct Withdraw<'info> {
 
     /// Pool state account
     #[account(mut)]
-    pub pool_state: AccountLoader<'info, PoolState>,
+    pub pool_state: AccountLoader<'info, CpmmPoolState>,
 
     /// Owner lp token account
     #[account(

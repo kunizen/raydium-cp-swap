@@ -5,11 +5,11 @@ use anchor_lang::prelude::*;
 use std::time::{SystemTime, UNIX_EPOCH};
 /// Seed to derive account address and signature
 pub const OBSERVATION_SEED: &str = "observation";
-// Number of ObservationState element
+// Number of CpmmObservationState element
 pub const OBSERVATION_NUM: usize = 100;
 pub const OBSERVATION_UPDATE_DURATION_DEFAULT: u64 = 15;
 
-/// The element of observations in ObservationState
+/// The element of observations in CpmmObservationState
 #[zero_copy(unsafe)]
 #[repr(packed)]
 #[derive(Default, Debug)]
@@ -28,8 +28,8 @@ impl Observation {
 #[account(zero_copy(unsafe))]
 #[repr(packed)]
 #[cfg_attr(feature = "client", derive(Debug))]
-pub struct ObservationState {
-    /// Whether the ObservationState is initialized
+pub struct CpmmObservationState {
+    /// Whether the CpmmObservationState is initialized
     pub initialized: bool,
     /// the most-recently updated index of the observations array
     pub observation_index: u16,
@@ -40,10 +40,10 @@ pub struct ObservationState {
     pub padding: [u64; 4],
 }
 
-impl Default for ObservationState {
+impl Default for CpmmObservationState {
     #[inline]
-    fn default() -> ObservationState {
-        ObservationState {
+    fn default() -> CpmmObservationState {
+        CpmmObservationState {
             initialized: false,
             observation_index: 0,
             pool_id: Pubkey::default(),
@@ -53,7 +53,7 @@ impl Default for ObservationState {
     }
 }
 
-impl ObservationState {
+impl CpmmObservationState {
     pub const LEN: usize = 8 + 1 + 2 + 32 + (Observation::LEN * OBSERVATION_NUM) + 8 * 4;
 
     // Writes an oracle observation to the account, returning the next observation_index.
@@ -62,7 +62,7 @@ impl ObservationState {
     ///
     /// # Arguments
     ///
-    /// * `self` - The ObservationState account to write in
+    /// * `self` - The CpmmObservationState account to write in
     /// * `block_timestamp` - The current timestamp of to update
     /// * `token_0_price_x32` - The token_0_price_x32 at the time of the new observation
     /// * `token_1_price_x32` - The token_1_price_x32 at the time of the new observation

@@ -191,7 +191,7 @@ fn main() -> Result<()> {
             user_token_1,
             lp_token_amount,
         } => {
-            let pool_state: raydium_cp_swap::states::PoolState = program.account(pool_id)?;
+            let pool_state: raydium_cp_swap::states::CpmmPoolState = program.account(pool_id)?;
             // load account
             let load_pubkeys = vec![pool_state.token_0_vault, pool_state.token_1_vault];
             let rsps = rpc_client.get_multiple_accounts(&load_pubkeys)?;
@@ -292,7 +292,7 @@ fn main() -> Result<()> {
             user_lp_token,
             lp_token_amount,
         } => {
-            let pool_state: raydium_cp_swap::states::PoolState = program.account(pool_id)?;
+            let pool_state: raydium_cp_swap::states::CpmmPoolState = program.account(pool_id)?;
             // load account
             let load_pubkeys = vec![pool_state.token_0_vault, pool_state.token_1_vault];
             let rsps = rpc_client.get_multiple_accounts(&load_pubkeys)?;
@@ -404,7 +404,7 @@ fn main() -> Result<()> {
             user_input_token,
             user_input_amount,
         } => {
-            let pool_state: raydium_cp_swap::states::PoolState = program.account(pool_id)?;
+            let pool_state: raydium_cp_swap::states::CpmmPoolState = program.account(pool_id)?;
             // load account
             let load_pubkeys = vec![
                 pool_state.amm_config,
@@ -558,7 +558,7 @@ fn main() -> Result<()> {
             user_input_token,
             amount_out_less_fee,
         } => {
-            let pool_state: raydium_cp_swap::states::PoolState = program.account(pool_id)?;
+            let pool_state: raydium_cp_swap::states::CpmmPoolState = program.account(pool_id)?;
             // load account
             let load_pubkeys = vec![
                 pool_state.amm_config,

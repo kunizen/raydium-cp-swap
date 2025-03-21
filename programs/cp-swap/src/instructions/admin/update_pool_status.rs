@@ -9,7 +9,7 @@ pub struct UpdatePoolStatus<'info> {
     pub authority: Signer<'info>,
 
     #[account(mut)]
-    pub pool_state: AccountLoader<'info, PoolState>,
+    pub pool_state: AccountLoader<'info, CpmmPoolState>,
 }
 
 pub fn update_pool_status(ctx: Context<UpdatePoolStatus>, status: u8) -> Result<()> {
