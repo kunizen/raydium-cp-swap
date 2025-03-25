@@ -347,25 +347,6 @@ pub fn handle_program_instruction(
             }
             println!("{:#?}", UpdateAmmConfig::from(ix));
         }
-        instruction::Initialize::DISCRIMINATOR => {
-            let ix = decode_instruction::<instruction::Initialize>(&mut ix_data).unwrap();
-            #[derive(Debug)]
-            pub struct Initialize {
-                pub init_amount_0: u64,
-                pub init_amount_1: u64,
-                pub open_time: u64,
-            }
-            impl From<instruction::Initialize> for Initialize {
-                fn from(instr: instruction::Initialize) -> Initialize {
-                    Initialize {
-                        init_amount_0: instr.init_amount_0,
-                        init_amount_1: instr.init_amount_1,
-                        open_time: instr.open_time,
-                    }
-                }
-            }
-            println!("{:#?}", Initialize::from(ix));
-        }
         instruction::UpdatePoolStatus::DISCRIMINATOR => {
             let ix = decode_instruction::<instruction::UpdatePoolStatus>(&mut ix_data).unwrap();
             #[derive(Debug)]

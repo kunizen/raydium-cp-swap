@@ -142,24 +142,6 @@ pub mod raydium_cp_swap {
     /// # Arguments
     ///
     /// * `ctx`- The context of accounts
-    /// * `init_amount_0` - the initial amount_0 to deposit
-    /// * `init_amount_1` - the initial amount_1 to deposit
-    /// * `open_time` - the timestamp allowed for swap
-    ///
-    pub fn initialize(
-        ctx: Context<Initialize>,
-        init_amount_0: u64,
-        init_amount_1: u64,
-        open_time: u64,
-    ) -> Result<()> {
-        instructions::initialize(ctx, init_amount_0, init_amount_1, open_time)
-    }
-
-    /// Creates a pool for the given token pair and the initial price
-    ///
-    /// # Arguments
-    ///
-    /// * `ctx`- The context of accounts
     /// * `lp_token_amount` - Pool token amount to transfer. token_a and token_b amount are set by the current exchange rate and size of the pool
     /// * `maximum_token_0_amount` -  Maximum token 0 amount to deposit, prevents excessive slippage
     /// * `maximum_token_1_amount` - Maximum token 1 amount to deposit, prevents excessive slippage
